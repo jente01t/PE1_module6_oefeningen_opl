@@ -59,7 +59,7 @@ while (aantalBoten2 <= 2) {
 printVeld(veldSpeler2);
 
 
-while (raakSpeler1 < 3 || raakSpeler2 < 3) {
+while (raakSpeler1 < bootLengte || raakSpeler2 < bootLengte) {
     if (aanzetSpeler1) {
         console.log('Speler 1, schiet op de boten van speler 2: ');
         let x = parseFloat(await userInput.question('Geef de X coördinaat van het schot: '));
@@ -77,8 +77,11 @@ while (raakSpeler1 < 3 || raakSpeler2 < 3) {
     }
 }
 
-
-console.log("Je hebt gewonnen!");
+if (raakSpeler1 == bootLengte) {
+    console.log("Speler 1 heeft gewonnen!");
+} else {
+    console.log("Speler 2 heeft gewonnen!");
+}
 
 process.exit();
 
@@ -192,7 +195,6 @@ function schietSpeler1(x, y) {
     } else {
         if (veldSpeler1[y - 1][x - 1] == "[B]") {
             console.log("Raak!");
-            console.log('');
             veldSpeler1[y - 1][x - 1] = "[*]";
             raakSpeler1++;
             return raakSpeler1;
@@ -209,7 +211,6 @@ function schietSpeler2(x, y) {
     } else {
         if (veldSpeler2[y - 1][x - 1] == "[B]") {
             console.log("Raak!");
-            console.log('');
             veldSpeler2[y - 1][x - 1] = "[*]";
             raakSpeler2++;
             return raakSpeler2;
