@@ -14,9 +14,9 @@ while (student != "S") {
 
 console.log("De studenten zijn: " + studentenlijst.join(", "));
 
-console.log('De studentenlijst: ')
-for (let i = 0; i < studentenlijst.length; i++) {
-    console.log(studentenlijst[i]);
-}
+//console.log('De studentenlijst: ')
+//for (let i = 0; i < studentenlijst.length; i++) {
+//    console.log(studentenlijst[i]);
+//}
 
 process.exit();
