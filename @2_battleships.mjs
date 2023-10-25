@@ -31,7 +31,8 @@ let veldSpeler2 = [
 let bootLengte = 0;
 let aantalBoten1 = 0;
 let aantalBoten2 = 0;
-let raak = 0;
+let raakSpeler1 = 0;
+let raakSpeler2 = 0;
 
 
 console.log('Speler 1, plaats je boten: ');
@@ -54,19 +55,36 @@ while (aantalBoten2 <= 2) {
     bootSpeler2(bootLengte, bootOrianatie, bootX, bootY);
     console.log('');
 }
-printVeld(veldSpeler1);
+printVeld(veldSpeler2);
 
 
+
+console.log('Speler 1, schiet op de boten van speler 2: ');
 while (raak < bootLengte) {
     let x = parseFloat(await userInput.question('Geef de X coördinaat van het schot: '));
     let y = parseFloat(await userInput.question('Geef de Y coördinaat van het schot: '));
-    schiet(x, y);
+    schietSpeler1(x, y);
     printVeld(veldSpeler1);
 }
+
+console.log('Speler 2, schiet op de boten van speler 1: ');
+while (raak < bootLengte) {
+    let x = parseFloat(await userInput.question('Geef de X coördinaat van het schot: '));
+    let y = parseFloat(await userInput.question('Geef de Y coördinaat van het schot: '));
+    schietSpeler2(x, y);
+    printVeld(veldSpeler1);
+}
+
+
 
 console.log("Je hebt gewonnen!");
 
 process.exit();
+
+
+
+
+
 
 
 
@@ -174,7 +192,7 @@ function bootSpeler2(bootLengte, bootOrianatie, bootX, bootY) {
 
 
 
-function schiet(x, y) {
+function schietSpeler1(x, y) {
     if (x > 10 || x < 1 || y > 10 || y < 1) {
         console.log("Je schot is buiten het veld.");
     } else {
@@ -182,8 +200,8 @@ function schiet(x, y) {
             console.log("Raak!");
             console.log('');
             veldSpeler1[y - 1][x - 1] = "[*]";
-            raak++;
-            return raak;
+            raakSpeler1++;
+            return raakSpeler1;
         } else {
             console.log("Mis!");
             veldSpeler1[y - 1][x - 1] = "[^]";
@@ -191,6 +209,22 @@ function schiet(x, y) {
     }
 }
 
+function schietSpeler2(x, y) {
+    if (x > 10 || x < 1 || y > 10 || y < 1) {
+        console.log("Je schot is buiten het veld.");
+    } else {
+        if (veldSpeler2[y - 1][x - 1] == "[B]") {
+            console.log("Raak!");
+            console.log('');
+            veldSpeler2[y - 1][x - 1] = "[*]";
+            raakSpeler2++;
+            return raakSpeler2;
+        } else {
+            console.log("Mis!");
+            veldSpeler2[y - 1][x - 1] = "[^]";
+        }
+    }
+}
 
 function printVeld(veld) {
     for (let i = 0; i < veld.length; i++) {
