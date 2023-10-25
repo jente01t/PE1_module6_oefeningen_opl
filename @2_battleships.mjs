@@ -33,6 +33,7 @@ let aantalBoten1 = 0;
 let aantalBoten2 = 0;
 let raakSpeler1 = 0;
 let raakSpeler2 = 0;
+let aanzetSpeler1 = true;
 
 
 console.log('Speler 1, plaats je boten: ');
@@ -58,35 +59,28 @@ while (aantalBoten2 <= 2) {
 printVeld(veldSpeler2);
 
 
-
-console.log('Speler 1, schiet op de boten van speler 2: ');
-while (raak < bootLengte) {
-    let x = parseFloat(await userInput.question('Geef de X coördinaat van het schot: '));
-    let y = parseFloat(await userInput.question('Geef de Y coördinaat van het schot: '));
-    schietSpeler1(x, y);
-    printVeld(veldSpeler1);
+while (raakSpeler1 < 3 || raakSpeler2 < 3) {
+    if (aanzetSpeler1) {
+        console.log('Speler 1, schiet op de boten van speler 2: ');
+        let x = parseFloat(await userInput.question('Geef de X coördinaat van het schot: '));
+        let y = parseFloat(await userInput.question('Geef de Y coördinaat van het schot: '));
+        schietSpeler1(x, y);
+        printVeld(veldSpeler1);
+        aanzetSpeler1 = false;
+    } else {
+        console.log('Speler 2, schiet op de boten van speler 1: ');
+        let x = parseFloat(await userInput.question('Geef de X coördinaat van het schot: '));
+        let y = parseFloat(await userInput.question('Geef de Y coördinaat van het schot: '));
+        schietSpeler2(x, y);
+        printVeld(veldSpeler1);
+        aanzetSpeler1 = true;
+    }
 }
-
-console.log('Speler 2, schiet op de boten van speler 1: ');
-while (raak < bootLengte) {
-    let x = parseFloat(await userInput.question('Geef de X coördinaat van het schot: '));
-    let y = parseFloat(await userInput.question('Geef de Y coördinaat van het schot: '));
-    schietSpeler2(x, y);
-    printVeld(veldSpeler1);
-}
-
 
 
 console.log("Je hebt gewonnen!");
 
 process.exit();
-
-
-
-
-
-
-
 
 
 
