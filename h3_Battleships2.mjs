@@ -29,30 +29,36 @@ function boot(bootLengte, bootOrianatie, bootX, bootY) {
                 console.log('Je boot staat uit het veld.');
                 process.exit();
             } else {
-                for ( i = 0; i < bootLengte; i++)
-                veld[bootY - 1 - i][bootX - 1] = "[B]";
+                for (i = 0; i < bootLengte; i++) {
+                    veld[bootY - 1 - i][bootX - 1] = "[B]";
+                }
             }
         } else if (bootOrianatie == "down") {
             if (bootY + bootLengte > 10) {
                 console.log('Je boot staat uit het veld.');
                 process.exit();
             } else {
-                //overal for loop zetten 
-                veld[bootY - 1 + i][bootX - 1] = "[B]";
+                for (i = 0; i < bootLengte; i++) {
+                    veld[bootY - 1 + i][bootX - 1] = "[B]";
+                }
             }
-        } else if (bootOrianatie =="left") {
+        } else if (bootOrianatie == "left") {
             if (bootX - bootLengte < 0) {
                 console.log('Je boot staat uit het veld.');
                 process.exit();
             } else {
-                veld[bootY - 1][bootX - 1 - i] = "[B]";
+                for (i = 0; i < bootLengte; i++) {
+                    veld[bootY - 1][bootX - 1 - i] = "[B]";
+                }
             }
         } else if (bootOrianatie == "right") {
             if (bootX + bootLengte > 10) {
                 console.log('Je boot staat uit het veld.');
                 process.exit();
             } else {
-                veld[bootY - 1][bootX - 1 + i] = "[B]";
+                for (i = 0; i < bootLengte; i++) {
+                    veld[bootY - 1][bootX - 1 + i] = "[B]";
+                }
             }
         }
     } else {
